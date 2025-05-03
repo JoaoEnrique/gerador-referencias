@@ -198,7 +198,7 @@ export default function Home() {
                         
                         {numberAuthors === "Mais de 3 (forma abreviada)" && (
                             <div className="mb-5 md:mb-2">
-                                <label htmlFor="" className="required">Autor 1 </label>
+                                <label htmlFor="" className="required">Autor </label>
                                 <input
                                     key={0}
                                     type="text"
@@ -209,7 +209,7 @@ export default function Home() {
                                         setAuthors(newAuthors);
                                     }}
                                     className={`${errors[`author0`] ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                                    placeholder={`Autor 1`}
+                                    placeholder={`Autor`}
                                 />
                                 {errors[`author0`] && <p className="text-red-500 text-sm mt-1">{errors[`author0`]}</p>}
                             </div>
@@ -218,7 +218,7 @@ export default function Home() {
                         {numberAuthors !== "Mais de 3 (forma abreviada)" &&
                         [...Array(Number(numberAuthors))].map((_, index) => (
                             <div className="mb-5 md:mb-2">
-                                <label htmlFor="" className="required">Autor {index +1} </label>
+                                <label htmlFor="" className="required">Autor {numberAuthors !== "1" ? index +1 : ""} </label>
                                 <input
                                     key={index}
                                     type="text"
@@ -229,7 +229,7 @@ export default function Home() {
                                         setAuthors(newAuthors);
                                     }}
                                     className={`${errors[`author${index}`] ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                                    placeholder={`Autor ${index + 1}`}
+                                    placeholder={`Autor ${numberAuthors !== "1" ? index +1 : ""}`}
                                 />
                                 {errors[`author${index}`] && <p className="text-red-500 text-sm mt-1">{errors[`author${index}`]}</p>}
                             </div>
