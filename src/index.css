@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root{
+    --background-gray: #F9FAFB;
+    --primary-blue: #5bb4ff;
+    --text-color: rgb(35 39 47);
+}
