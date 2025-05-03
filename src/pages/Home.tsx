@@ -4,7 +4,6 @@ import "./style.css";
 export default function Home() {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [typeAuthor, setTypeAuthor] = useState("");
-    const [author, setAuthor] = useState("");
     const [numberAuthors, setNumberAuthors] = useState("1");
     const [intellectualResponsibility, setIntellectualResponsibility] = useState("");
     const [title, setTitle] = useState("");
@@ -31,7 +30,6 @@ export default function Home() {
     
     const clearForm = () =>{
         setTypeAuthor("");
-        setAuthor("");
         setTitle("");
         setSubtitle("");
         setEditionNumber("");
