@@ -206,25 +206,31 @@ export default function Home() {
                     </div>
 
                     {referenceResult ? (
-                        <div className="result mb-5">
-                            <h3 className="text-2xl mb-5 md:mb-2">Referências: </h3>
+                        <div className="result mt-3 mb-5">
                             <p>
-                                <span className="bold">Citação: </span> { citationTextResult }
+                                <span className="bold">Citação: <br /> </span> 
+                                <div className="result-container"> { citationTextResult }</div>
                             </p>
-                            <p>
-                                <span className="bold">Referência: </span> { referenceResult }  {/* nome */}
-                                <span className="bold"> {titleResult}</span>
-                                { subtitleResult ?? subtitleResult}
-                                { editionNumberResult ?? editionNumberResult}
-                                { locationResult ?? locationResult}
-                                { publisherResult }
-                                { yearResult }
-                                {online ? (
-                                    <>
-                                        Disponível: {linkResult}. Acesso em: {acessDataResult}
-                                    </>
-                                ) : null }
 
+                            <br />
+                            
+                            <p>
+                                <span className="bold">Referência: </span> 
+                                
+                                <div className="result-container">
+                                    { referenceResult }  {/* nome */}
+                                    <span className="bold"> {titleResult}</span>
+                                    { subtitleResult ?? subtitleResult}
+                                    { editionNumberResult ?? editionNumberResult}
+                                    { locationResult ?? locationResult}
+                                    { publisherResult }
+                                    { yearResult }
+                                    {online ? (
+                                        <>
+                                            Disponível: {linkResult}. Acesso em: {acessDataResult}
+                                        </>
+                                    ) : null }
+                                </div>
                             </p>
                         </div>
                     ) : null}

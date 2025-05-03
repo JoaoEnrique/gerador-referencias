@@ -15,12 +15,18 @@ button{
 }
 
 .bold{
-    font-weight: bold;
+    font-weight: 500;
 }
 
 footer{
     background-color: var(--background-gray);
     padding: 50px;
+}
+
+.result-container{
+    background-color: var(--background-gray);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .user-select-none {
