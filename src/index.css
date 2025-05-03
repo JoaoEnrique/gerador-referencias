@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root{
     --background-gray: #F9FAFB;
     --primary-blue: #5bb4ff;

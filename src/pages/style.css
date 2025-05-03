@@ -3,6 +3,11 @@
     font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoj!important;
 }
 
+label.required::after{
+    content: " *";
+    color: red;
+}
+
 button{
     background-color: var(--primary-blue);
     width: 300px;
@@ -19,7 +24,7 @@ button{
 }
 
 .landing-container{
-    height: 90dvh;
+    height: 70dvh;
     background-color: var(--background-gray);
 
     h1{
@@ -28,6 +33,7 @@ button{
     }
 
     h3{
+        text-align: center;
         font-weight: 400;
         line-height: 1.375;
         margin-top: 20px;
@@ -41,6 +47,31 @@ button{
     }
 }
 
+.form-container{
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    form{
+        width: 50%;
+        padding: 20px 20px;
+        border: 1px solid #DDDDDD;
+        border-radius: 10px;
+    }
+
+    .buttons-container{
+        min-width: 100%;
+    }
+}
+
 .text-secondary{
     color: rgb(64 71 86)
+}
+
+@media screen and (max-width: 850px) {
+    .form-container{
+        form{
+            width: 100%;
+            padding: 0 10px;
+        }
+    }
 }
