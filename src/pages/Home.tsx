@@ -108,34 +108,29 @@ export default function Home() {
 
     return (
         <div>
-            <div className="flex flex-col justify-center items-center landing-container">
+            <header className="flex flex-col justify-center items-center landing-container">
                 <h1 className="text-5xl">CIRA</h1>
                 <h3 className="text-4xl text-secondary">Gerador de Referências</h3>
-                <button className="user-select-none text-white font-bold py-2 px-4 rounded-full">Gerar</button>
-            </div>
+                {/* <button className="user-select-none text-white font-bold py-2 px-4 rounded-full">Gerar</button> */}
+            </header>
 
-            <div className="flex flex-col justify-center items-center form-container">
+            <section className="flex flex-col justify-center items-center form-container">
                 <form onSubmit={((e) => { e.preventDefault(); handleSubmit() })}>
                     <div className="mx-auto grid md:grid-cols-3 md:gap-6">
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Tipo do Autor</label>
                             <select value={typeAuthor} onChange={(e) => setTypeAuthor(e.target.value)} className={`${errors.typeAuthor ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
                                 <option>Pessoa(s) Física(s)</option>
                             </select>                    
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Responsabilidade Intelectual</label>
                             <select value={intellectualResponsibility} onChange={(e) => setIntellectualResponsibility(e.target.value)} className={`${errors.intellectualResponsibility ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
                                 <option>Autor da Obra</option>
                             </select>  
                         </div>
-                        {/* <div className="mb-2">
-                            <label htmlFor="">Forma Abreviada p/ mais de 3 Autores?</label>
-                            <select value={typeAuthor} onChange={(e) => setTypeAuthor(e.target.value)} className={`${errors.author ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
-                                <option>Autor da Obra</option>
-                            </select>  
-                        </div> */}
-                        <div className="mb-2">
+
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="typeAuthor" className="required">Quantidade de Autores</label>
                             <select name="typeAuthor" value={numberAuthors} onChange={(e) => setNumberAuthors(e.target.value)} className={`${errors.numberAuthors ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
                                 <option>1</option>
@@ -144,44 +139,44 @@ export default function Home() {
                                 <option>Mais de 3 (forma abreviada)</option>
                             </select> 
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Autor</label>
                             <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} className={`${errors.author ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="João Enrique" />
                             {errors.author && <p className="text-red-500 text-sm mt-1">{errors.author}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Título</label>
                             <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)} className={`${errors.title ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Título do livro" />
                             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="">Subtítulo</label>
                             <input type="text"  value={subtitle} onChange={(e) => setSubtitle(e.target.value)} className={`${errors.subtitle ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Subtitulo do livro" />
                             {errors.subtitle && <p className="text-red-500 text-sm mt-1">{errors.subtitle}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="">N° da Edição</label>
                             <input type="number" value={editionNumber} onChange={(e) => setEditionNumber(e.target.value)} className={`${errors.editionNumber ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="10" />
                             {errors.editionNumber && <p className="text-red-500 text-sm mt-1">{errors.editionNumber}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="">Local (Cidade)</label>
                             <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} className={`${errors.location ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="São Paulo" />
                             {errors.location && <p className="text-red-500 text-sm mt-1">{errors.location}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Editora</label>
                             <input type="text" value={publisher} onChange={(e) => setPublisher(e.target.value)} className={`${errors.publisher ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Nome da editora" />
                             {errors.publisher && <p className="text-red-500 text-sm mt-1">{errors.publisher}</p>}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                             <label htmlFor="" className="required">Ano (aaaa)</label>
                             <input type="text" value={year} onChange={(e) => setYear(e.target.value)} className={`${errors.year ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="2025" />
                             {errors.year && <p className="text-red-500 text-sm mt-1">{errors.year}</p>}
                         </div>
 
                         
-                        <div className="mb-2">
+                        <div className="mb-5 md:mb-2">
                         <label htmlFor="">&nbsp;</label>
                             <div>
                                 <label className="inline-flex items-center cursor-pointer">
@@ -195,13 +190,13 @@ export default function Home() {
                         {/* link se for online */}
                         {online ? (
                             <>
-                                <div className="mb-2">
+                                <div className="mb-5 md:mb-2">
                                     <label htmlFor="" className="required">Link (URL)</label>
                                     <input type="text" value={link} onChange={(e) => setLink(e.target.value)} className={`${errors.link ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="https://google.com" />
                                     {errors.link && <p className="text-red-500 text-sm mt-1">{errors.link}</p>}
                                 </div>
 
-                                <div className="mb-2">
+                                <div className="mb-5 md:mb-2">
                                     <label htmlFor="" className="required">Data de acesso</label>
                                     <input type="date" value={acessData} onChange={(e) => setAcessData(e.target.value)} className={`${errors.acessData ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="2025" />
                                     {errors.acessData && <p className="text-red-500 text-sm mt-1">{errors.acessData}</p>}
@@ -212,7 +207,7 @@ export default function Home() {
 
                     {referenceResult ? (
                         <div className="result mb-5">
-                            <h3 className="text-2xl mb-2">Referências: </h3>
+                            <h3 className="text-2xl mb-5 md:mb-2">Referências: </h3>
                             <p>
                                 <span className="bold">Citação: </span> { citationTextResult }
                             </p>
@@ -239,7 +234,13 @@ export default function Home() {
                         <button type="submit" className="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Gerar</button>
                     </div>
                 </form>
-            </div>
+            </section>
+
+            <footer className="flex flex-col justify-center items-center">
+                <h3 className="text-2xl text-footer">
+                    Desenvolvido por: <a href="https://joaoenrique.github.io/">João Enrique</a>
+                </h3>
+            </footer>
         </div>
     );
 }
