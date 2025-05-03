@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 
 export default function Home() {
@@ -28,6 +28,25 @@ export default function Home() {
     const [linkResult, setLinkResult] = useState("");
     const [acessDataResult, setAcessDataResult] = useState("");
     
+    useEffect(() => {
+        let num = 1;
+        if (numberAuthors === "Mais de 3 (forma abreviada)") {
+          num = 1;
+        } else {
+          num = Number(numberAuthors);
+        }
+      
+        setAuthors((prevAuthors) => {
+          const newAuthors = [...prevAuthors];
+          // Ajusta o tamanho do array
+          newAuthors.length = num;
+          for (let i = 0; i < num; i++) {
+            if (!newAuthors[i]) newAuthors[i] = "";
+          }
+          return newAuthors;
+        });
+    }, [numberAuthors]);
+      
     const clearForm = () =>{
         setTypeAuthor("");
         setTitle("");
@@ -75,12 +94,20 @@ export default function Home() {
 
     const validateForm = (): boolean => {
         const newErrors: { [key: string]: string } = {};
-        // if (!author.trim()) newErrors.author = "O autor é obrigatório";
+
+        authors.forEach((element, index) => {
+           if(!element.trim())
+                newErrors[`author${index}`] = `O ${index + 1}° autor é obrigatório`;
+        });
         if (!title.trim()) newErrors.title = "O título é obrigatório";
         if (!publisher.trim()) newErrors.publisher = "A editora é obrigatória";
         if (!year.trim()) newErrors.year = "O ano é obrigatório";
         if (online && !link.trim()) newErrors.link = "O link é obrigatório";
         if (online && !acessData.trim()) newErrors.acessData = "A data de acesso é obrigatória";
+
+
+        console.log(newErrors);
+        
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
@@ -171,9 +198,10 @@ export default function Home() {
                                         newAuthors[0] = e.target.value;
                                         setAuthors(newAuthors);
                                     }}
-                                    className={`${errors.author ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                                    className={`${errors[`author0`] ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                                     placeholder={`Autor 1`}
                                 />
+                                {errors[`author0`] && <p className="text-red-500 text-sm mt-1">{errors[`author0`]}</p>}
                             </div>
                         )}
 
@@ -190,9 +218,10 @@ export default function Home() {
                                         newAuthors[index] = e.target.value;
                                         setAuthors(newAuthors);
                                     }}
-                                    className={`${errors.author ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                                    className={`${errors[`author${index}`] ? "border-red-500" : ""} ^bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                                     placeholder={`Autor ${index + 1}`}
                                 />
+                                {errors[`author${index}`] && <p className="text-red-500 text-sm mt-1">{errors[`author${index}`]}</p>}
                             </div>
                         ))}
 
