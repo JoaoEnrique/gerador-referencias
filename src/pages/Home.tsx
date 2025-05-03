@@ -88,7 +88,7 @@ export default function Home() {
         setLocationResult(location ? ` ${location}: ` : "")
         setYearResult(`${year}. `)
         setLinkResult(link)
-        setAcessDataResult(acessData);
+        setAcessDataResult(online ? `${formattDate(acessData)}. `: "");
         setEditionNumberResult(editionNumber ? ` ${editionNumber}. ed.` : "")
     } 
 
@@ -105,9 +105,6 @@ export default function Home() {
         if (online && !link.trim()) newErrors.link = "O link é obrigatório";
         if (online && !acessData.trim()) newErrors.acessData = "A data de acesso é obrigatória";
 
-
-        console.log(newErrors);
-        
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
@@ -139,7 +136,20 @@ export default function Home() {
         }
       
         return { fullName, citationTextResult };
-      };
+    };
+
+    function formattDate(data: string): string {
+        const meses = [
+            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
+    
+        const [ano, mes, dia] = data.split("-");
+        const diaFormatado = dia.padStart(2, "0"); // Garante dois dígitos no dia
+        const nomeMes = meses[parseInt(mes) - 1];
+
+        return `${diaFormatado} ${nomeMes} ${ano}`;
+    }
 
     const changeToCapitalLetters = (text: Array<string>): string => {
         const words = text;
