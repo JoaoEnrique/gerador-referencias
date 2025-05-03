@@ -122,21 +122,26 @@ export default function Home() {
       
         if (numberAuthors === "1") {
           fullName = `${formattedAuthors[0]}.`;
-          citationTextResult = `${formattedAuthors[0].split(",")[0]}, (${year})`;
+          citationTextResult = `${capitalizeFirstLetter(formattedAuthors[0].split(",")[0])} (${year})`;
         } else if (numberAuthors === "2") {
           fullName = `${formattedAuthors[0]}; ${formattedAuthors[1]}.`;
-          citationTextResult = `${formattedAuthors[0].split(",")[0]} e ${formattedAuthors[1].split(",")[0]}, (${year})`;
+          citationTextResult = `${capitalizeFirstLetter(formattedAuthors[0].split(",")[0])} e ${capitalizeFirstLetter(formattedAuthors[1].split(",")[0])} (${year})`;
         } else if (numberAuthors === "3") {
           fullName = `${formattedAuthors[0]}; ${formattedAuthors[1]}; ${formattedAuthors[2]}.`;
-          citationTextResult = `${formattedAuthors[0].split(",")[0]} et al., (${year})`;
+          citationTextResult = `${capitalizeFirstLetter(formattedAuthors[0].split(",")[0])}, ${capitalizeFirstLetter(formattedAuthors[1].split(",")[0])} e ${capitalizeFirstLetter(formattedAuthors[2].split(",")[0])} (${year})`;
         } else {
           // Mais de 3 autores
           fullName = `${formattedAuthors[0]} et al.`;
-          citationTextResult = `${formattedAuthors[0].split(",")[0]} et al., (${year})`;
+          citationTextResult = `${formattedAuthors[0].split(",")[0]} et al. (${year})`;
         }
       
         return { fullName, citationTextResult };
     };
+
+    function capitalizeFirstLetter(text: string): string {
+        return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    }
+    
 
     function formattDate(data: string): string {
         const meses = [
